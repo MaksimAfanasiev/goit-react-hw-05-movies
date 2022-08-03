@@ -6,7 +6,7 @@ import { getMovies } from "api";
 export const Movies = () => {
     const [query, setQuery] = useState("");
     const [movies, setMovies] = useState([]);
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [, setSearchParams] = useSearchParams();
     const { movieId } = useParams();
 
     useEffect(() => {
