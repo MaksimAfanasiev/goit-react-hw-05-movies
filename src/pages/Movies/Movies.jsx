@@ -1,53 +1,48 @@
-import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
-import { useSearchParams, Outlet, useParams } from "react-router-dom";
+import { useState, useEffect, Suspense } from "react"
+import { useSearchParams, Outlet, useParams} from "react-router-dom";
 import { getMovies } from "api";
+import { Searchbox } from "components/Searchbox/Searchbox";
+import { MoviesList } from "../../components/MoviesList/MoviesList";
 
-export const Movies = () => {
+const Movies = () => {
     const [query, setQuery] = useState("");
     const [movies, setMovies] = useState([]);
     const [, setSearchParams] = useSearchParams();
     const { movieId } = useParams();
+
 
     useEffect(() => {
         if (query === "") {
             setMovies([]);
             return;
         }
-        getMovies(query).then(setMovies)
+
+        getMovies(query).then(setMovies);
+
     }, [query])
 
-    function onFormSubmit(e) {
+    function onSubmit(e) {
         e.preventDefault();
         setQuery(e.target.query.value);
-        setSearchParams({query: e.target.query.value})
+        setSearchParams({ query: e.target.query.value })
         e.target.query.value = "";
     }
 
     return (
         
-        movieId  ?
+        movieId
+            ?
+            <Suspense>
+                <Outlet />
+            </Suspense>
+            :
+            <>
+                <Searchbox onFormSubmit={onSubmit} />
             
-            <Outlet/>
-        :
-        <>
-            <form onSubmit={onFormSubmit}>
-                <input type="text" name="query" />
-                <button type="submit">Search</button>
-            </form>
+                <MoviesList movies={movies}/>
     
-            <ul>
-                {
-                    movies.length > 0 && movies.map(({ id, title }) => (
-                        <li key={id}>
-                            <Link to={`${id}`}>
-                                {title}
-                            </Link>
-                        </li>
-                        )
-                    )
-                }
-            </ul>
-        </>
+            </>
     )
-}
+};
+
+export default Movies;

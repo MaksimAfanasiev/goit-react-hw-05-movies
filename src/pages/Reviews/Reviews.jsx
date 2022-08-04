@@ -1,8 +1,10 @@
 import { getReviews } from "../../api";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { ReviewsList } from "../../components/ReviewsList/ReviewsList";
+import { Notice } from "components/Notice/Notice";
 
-export const Reviews = () => {
+const Reviews = () => {
     const [reviews, setReviews] = useState([]);
     const { movieId } = useParams();
 
@@ -11,18 +13,12 @@ export const Reviews = () => {
     }, [movieId]);
 
     return (
-        reviews.length > 0 &&
-        <ul>
-                {reviews.map(review => {
-                    const { author, content, id } = review;
-                    return(
-                    <li key={id}>
-                        <h3>{author}</h3>
-                        <p>{content}</p>
-                        </li>
-                    )
-            })
-            }
-        </ul>
+        reviews.length > 0
+            ?
+            <ReviewsList reviews={reviews} />
+            :
+            <Notice text={"We don`t have any reviews for this movie!"} />
     )
-}
+};
+
+export default Reviews;

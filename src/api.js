@@ -46,8 +46,6 @@ export const getMovieDetails = async id => {
       return newMovie;
     });
 
-  console.log(filmDetails);
-
   return filmDetails;
 };
 
