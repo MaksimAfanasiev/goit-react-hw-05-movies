@@ -5,14 +5,13 @@ import { Searchbox } from "components/Searchbox/Searchbox";
 import { MoviesList } from "../../components/MoviesList/MoviesList";
 
 const Movies = () => {
-    const [query, setQuery] = useState("");
     const [movies, setMovies] = useState([]);
-    const [, setSearchParams] = useSearchParams();
+    const [searchParams, setSearchParams] = useSearchParams();
     const { movieId } = useParams();
-
+    const query = searchParams.get('query');
 
     useEffect(() => {
-        if (query === "") {
+        if (!query) {
             setMovies([]);
             return;
         }
@@ -23,7 +22,6 @@ const Movies = () => {
 
     function onSubmit(e) {
         e.preventDefault();
-        setQuery(e.target.query.value);
         setSearchParams({ query: e.target.query.value })
         e.target.query.value = "";
     }
@@ -32,16 +30,16 @@ const Movies = () => {
         
         movieId
             ?
-            <Suspense>
-                <Outlet />
-            </Suspense>
+        <Suspense>
+            <Outlet />
+        </Suspense>
             :
-            <>
-                <Searchbox onFormSubmit={onSubmit} />
-            
-                <MoviesList movies={movies}/>
-    
-            </>
+        <>
+            <Searchbox onFormSubmit={onSubmit} />
+        
+            <MoviesList movies={movies}/>
+
+        </>
     )
 };
 

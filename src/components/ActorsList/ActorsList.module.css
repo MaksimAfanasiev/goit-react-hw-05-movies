@@ -1,0 +1,13 @@
+.actorsList_item:not(:last-child) {
+    margin-bottom: 25px;
+}
+
+.actorsList_item__photo {
+    width: 200px;
+    height: auto;
+}
+
+.actorName, .actorRole {
+    margin-top: 5px;
+    margin-bottom: 0;
+}

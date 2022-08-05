@@ -1,6 +1,9 @@
-export const ReviewsList = ({reviews}) => {
+import css from "./ReviewsList.module.css";
+import PropTypes from "prop-types";
+
+export const ReviewsList = ({ reviews }) => {
     return (
-        <ul>
+        <ul className={css.reviewsList}>
             {reviews.map(review => {
                 const { author, content, id } = review;
                 return(
@@ -13,4 +16,8 @@ export const ReviewsList = ({reviews}) => {
             }
         </ul>
     )
+}
+
+ReviewsList.propTypes = {
+    reviews: PropTypes.arrayOf(PropTypes.object),
 }

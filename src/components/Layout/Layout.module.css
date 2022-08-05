@@ -1,0 +1,27 @@
+.container {
+    padding: 20px 30px;
+    max-width: 1000px;
+}
+
+header {
+    padding-bottom: 10px;
+    border-bottom: 1px solid;
+}
+
+.navList {
+    display: flex;
+    justify-content: center;
+}
+
+.navList_item {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.navList_item:not(:last-child) {
+    margin-right: 20px;
+}
+
+.content {
+    padding-top: 10px;
+}

@@ -1,0 +1,15 @@
+.trendFilmsList {
+    margin-left: 15px;
+}
+
+.trendFilmsList_item {
+    font-size: 18px;
+}
+
+.trendFilmsList_item > a:hover{
+    text-decoration: underline;
+}
+
+.trendFilmsList_item:not(:last-child) {
+    margin-bottom: 3px;
+}

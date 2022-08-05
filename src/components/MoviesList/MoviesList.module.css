@@ -1,0 +1,16 @@
+.moviesList {
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+.moviesList_item {
+    font-size: 18px;
+}
+
+.moviesList_item > a:hover {
+    text-decoration: underline;
+}
+
+.moviesList_item:not(:last-child) {
+    margin-bottom: 3px;
+}

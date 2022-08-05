@@ -1,0 +1,23 @@
+.addSection {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.addLinks {
+    display: flex;
+    margin-top: 10px;
+}
+
+.addLinks>li {
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.addLinks > li:not(:last-child) {
+    margin-right: 25px;
+}
+
+.addLinks>li>a:hover {
+    color:blue;
+    font-weight: 700;
+}
