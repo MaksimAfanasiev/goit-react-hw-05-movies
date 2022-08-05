@@ -11,17 +11,20 @@ const Home = () => {
     }, [])
 
     return (
-        <ul className={css.trendFilmsList}>
-            {
-                films.map(({ id, title }) => (
-                    <li key={id} className={css.trendFilmsList_item}>
-                        <Link to={`movies/${id}`}>
-                            {title}
-                        </Link>
-                    </li>
-                ))
-            }
-        </ul>
+        <>
+            <h1>Trending today</h1>
+            <ul className={css.trendFilmsList}>
+                {
+                    films.map(({ id, title }) => (
+                        <li key={id} className={css.trendFilmsList_item}>
+                            <Link to={`movies/${id}`}>
+                                {title}
+                            </Link>
+                        </li>
+                    ))
+                }
+            </ul>
+        </>
     )
 };
 
