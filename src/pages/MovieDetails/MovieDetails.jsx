@@ -8,8 +8,7 @@ const MovieDetails = () => {
     const [movie, setMovie] = useState({});
     const navigate = useNavigate();
     const location = useLocation();
-
-    const backLink = location.state?.from ?? "/movies";
+    const [backLink] = useState(location.state?.from ?? "/");
 
     useEffect(() => { getMovieDetails(movieId).then(setMovie) }, [movieId]);
 
@@ -40,7 +39,7 @@ const MovieDetails = () => {
                     <li><Link to={"cast"}>Cast</Link></li>
                     <li><Link to={"reviews"}>Reviews</Link></li>
                 </ul>
-            
+
             </div>
             <Suspense>
                 <Outlet />
